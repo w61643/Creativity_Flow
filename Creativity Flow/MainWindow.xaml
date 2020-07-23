@@ -1,0 +1,80 @@
+﻿<Window x:Class="Creativity_Flow.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Creativity_Flow" mc:Ignorable="d" Title="MainWindow" Height="477" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Grid.CommandBindings>
+            <CommandBinding Command="SystemCommands.CloseWindowCommand" Executed="Quit_Executed" />
+            <CommandBinding Command="ApplicationCommands.Properties" Executed="Settings_Executed" />
+        </Grid.CommandBindings>
+        <Menu>
+            <MenuItem x:Name="file" Header="File" StaysOpenOnClick="True">
+                <MenuItem x:Name="createFile" Header="New..." Command="ApplicationCommands.New">
+                    <MenuItem.CommandBindings>
+                        <CommandBinding Command="ApplicationCommands.New" Executed="NewFile_Executed" />
+                    </MenuItem.CommandBindings>
+                </MenuItem>
+                <Separator />
+                <MenuItem x:Name="openFile" Header="Open..." Command="ApplicationCommands.Open">
+                    <MenuItem.CommandBindings>
+                        <CommandBinding Command="ApplicationCommands.Open" Executed="OpenFile_Executed" />
+                    </MenuItem.CommandBindings>
+                </MenuItem>
+                <MenuItem x:Name="recentlyOpenedFiles" Header="Recently opened..." />
+                <Separator />
+                <MenuItem x:Name="saveFile" Header="Save" Command="ApplicationCommands.Save">
+                    <MenuItem.CommandBindings>
+                        <CommandBinding Command="ApplicationCommands.Save" Executed="SaveFile_Executed" />
+                    </MenuItem.CommandBindings>
+                </MenuItem>
+                <MenuItem x:Name="saveFileAs" Header="Save as..." Command="ApplicationCommands.SaveAs">
+                    <MenuItem.CommandBindings>
+                        <CommandBinding Command="ApplicationCommands.SaveAs" Executed="SaveFileAs_Executed" />
+                    </MenuItem.CommandBindings>
+                </MenuItem>
+                <Separator />
+                <MenuItem x:Name="quit" Header="Quit" Command="SystemCommands.CloseWindowCommand">
+                    <MenuItem.CommandBindings>
+                        <CommandBinding Command="SystemCommands.CloseWindowCommand" Executed="Quit_Executed" />
+                    </MenuItem.CommandBindings>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="settings" Header="Settings">
+                <MenuItem x:Name="chooseColorTheme" Header="Color theme" Command="">
+                    <MenuItem x:Name="lightTheme" Header="Light" />
+                    <MenuItem x:Name="darkTheme" Header="Dark" />
+                </MenuItem>
+                <Separator />
+                <MenuItem x:Name="setSettings" Header="Settings..." Command="ApplicationCommands.Properties" />
+            </MenuItem>
+            <MenuItem x:Name="edit" Header="Edit">
+                <MenuItem x:Name="cancel" Header="Cancel" />
+                <MenuItem x:Name="cut" Header="Cut" />
+                <MenuItem x:Name="copy" Header="Copy" />
+                <MenuItem x:Name="insert" Header="Insert" />
+                <MenuItem x:Name="delete" Header="Delete" />
+                <MenuItem x:Name="selectAll" Header="Select all" />
+                <MenuItem x:Name="find" Header="Find..." />
+            </MenuItem>
+            <MenuItem x:Name="info" Header="Info">
+                <MenuItem x:Name="infoFeedback" Header="Feedback..." />
+                <Separator />
+                <MenuItem x:Name="infoDonate" Header="Donate..." />
+                <Separator />
+                <MenuItem x:Name="aboutProgram" Header="About program..." />
+            </MenuItem>
+        </Menu>
+        <RichTextBox x:Name="textBox" Margin="10,65,10,50" Focusable="True" KeyUp="TextBox_KeyUp" IsEnabled="False" />
+
+        <Label x:Name="statusBar" Content="&#xD;&#xA;" Margin="10,0,10,10" Height="26" VerticalAlignment="Bottom" />
+        <Button x:Name="start" Content="Start" HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" Width="211" Command="local:MyCommands.Start" Height="20">
+            <Button.CommandBindings>
+                <CommandBinding Command="local:MyCommands.Start" Executed="Start_Executed" />
+            </Button.CommandBindings>
+        </Button>
+        <Button x:Name="stopB" Content="Stop" Margin="0,30,15,0" VerticalAlignment="Top" Command="local:MyCommands.Stop" IsEnabled="False" HorizontalAlignment="Right" Width="118">
+            <Button.CommandBindings>
+                <CommandBinding Command="local:MyCommands.Stop" Executed="Stop_Executed" />
+            </Button.CommandBindings>
+        </Button>
+        <Label x:Name="settingsBar" Content="" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Width="240" />
+
+    </Grid>
+</Window>
